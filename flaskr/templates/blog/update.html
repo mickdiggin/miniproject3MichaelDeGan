@@ -10,9 +10,9 @@
     <input name="title" id="title"
       value="{{ request.form['title'] or entry['title'] }}" required>
     <label for="release_year">Year Released</label>
-    <input name="release_year" id="release_year" value="{{ request.form['release_year'] }}">
+    <input name="release_year" id="release_year" value="{{ request.form['release_year'] or entry['release_year'] }}">
     <label for="starring">Starring</label>
-    <input name="starring" id="starring" value="{{ request.form['starring'] }}">
+    <input name="starring" id="starring" value="{{ request.form['starring'] or entry['starring'] }}">
     <label for="synopsis">Plot Synopsis</label>
     <textarea name="synopsis" id="synopsis">{{ request.form['synopsis'] or entry['synopsis'] }}</textarea>
     <input type="submit" value="Save">

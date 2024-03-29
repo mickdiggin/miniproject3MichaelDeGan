@@ -13,6 +13,8 @@
       <header>
         <div>
           <h1>{{ entry['title'] }}</h1>
+          <h2>{{ entry['release_year'] }}</h2>
+          <h2>{{ entry['starring'] }}</h2>
           <div class="about">last edited by {{ entry['username'] }} on {{ entry['edited'].strftime('%Y-%m-%d') }}</div>
         </div>
         {% if g.user %}

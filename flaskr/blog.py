@@ -17,7 +17,7 @@ def index():
         ' FROM entry e JOIN user u ON e.author_id = u.id'
         ' ORDER BY edited DESC'
     ).fetchall()
-    return render_template('blog/index.html', posts=entries)
+    return render_template('blog/index.html', entries=entries)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
@@ -86,9 +86,9 @@ def update(id):
         else:
             db = get_db()
             db.execute(
-                'UPDATE entry SET title = ?, release_year = ?, starring = ?, synopsis = ?'
+                'UPDATE entry SET title = ?, release_year = ?, starring = ?, synopsis = ?, author_id = ?'
                 ' WHERE id = ?',
-                (title, release_year, starring, synopsis, id)
+                (title, release_year, starring, synopsis, g.user['id'], id)
             )
             db.commit()
             return redirect(url_for('blog.index'))
