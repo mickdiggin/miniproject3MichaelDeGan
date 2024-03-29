@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Edit "{{ post['title'] }}"{% endblock %}</h1>
+  <h1>{% block title %}Edit "{{ entry['title'] }}"{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
   <form method="post">
     <label for="title">Title</label>
     <input name="title" id="title"
-      value="{{ request.form['title'] or post['title'] }}" required>
+      value="{{ request.form['title'] or entry['title'] }}" required>
     <label for="release_year">Year Released</label>
     <input name="release_year" id="release_year" value="{{ request.form['release_year'] }}">
     <label for="starring">Starring</label>
