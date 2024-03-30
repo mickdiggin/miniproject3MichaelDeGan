@@ -17,3 +17,14 @@ CREATE TABLE entry (
   synopsis TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
+
+CREATE TABLE images (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    filename TEXT NOT NULL,
+    data BLOB NOT NULL,
+    user_id INTEGER,
+    movie_id INTEGER,
+    upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (movie_id) REFERENCES entry (id),
+    FOREIGN KEY (user_id) REFERENCES user (id)
+);
