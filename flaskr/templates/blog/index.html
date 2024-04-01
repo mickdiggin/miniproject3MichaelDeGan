@@ -15,12 +15,19 @@
           <h1>{{ entry['title'] }}</h1>
           <h2>{{ entry['release_year'] }}</h2>
           <h2>{{ entry['starring'] }}</h2>
+          {% if entry['data']%}
+            <div class="movie-poster">
+          <!-- Example of using render_movie_poster function -->
+            {{ build_poster_string( entry['data'] )}}
+            </div>
+          {% endif %}
           <div class="about">last edited by {{ entry['username'] }} on {{ entry['edited'].strftime('%Y-%m-%d') }}</div>
         </div>
         {% if g.user %}
           <a class="action" href="{{ url_for('blog.update', id=entry['id']) }}">Edit</a>
         {% endif %}
       </header>
+
       <p class="synopsis">{{ entry['synopsis'] }}</p>
     </article>
     {% if not loop.last %}
